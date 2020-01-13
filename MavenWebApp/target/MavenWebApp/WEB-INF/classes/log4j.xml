@@ -1,0 +1,9 @@
+<appender name="Syslog" class="org.apache.log4j.net.SyslogAppender">
+    <param name="SyslogHost" value="IP:514"/>
+    <param name="Facility" value="USER"/>
+    <param name="FacilityPrinting" value="true"/>
+  <param name="Threshold" value="INFO"/>
+  <layout class="org.apache.log4j.IvyLog4jLayout">
+      <param name="DateFormat" value="MM/dd/yyyy hh:mm:ss"/>
+    </layout>
+</appender>

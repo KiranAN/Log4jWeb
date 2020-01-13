@@ -1,0 +1,37 @@
+package com.Logging;
+
+import java.io.Serializable;
+import java.net.*;
+/*import org.slf4j.LoggerFactory;*/
+import org.springframework.stereotype.Component;
+import org.apache.log4j.Appender;
+import org.apache.log4j.net.SyslogAppender;
+import org.apache.log4j.Logger;
+
+@Component
+public class TivoliLog4jLogger implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static Logger logger;
+	private static String hostname;
+	private static Logger rootLogger;
+	static {
+		try {
+			hostname = InetAddress.getLocalHost().getHostName();
+			logger = Logger.getLogger("TIVOLI");
+			rootLogger = Logger.getRootLogger();
+			SyslogAppender appender = (SyslogAppender) rootLogger.getAppender("SYSLOG");
+			if(appender != null) {
+				appender.setSyslogHost(hostname);
+			}
+			
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+		
+}

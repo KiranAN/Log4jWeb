@@ -8,6 +8,7 @@ import com.model.ControllerBook;
 import com.dao.Controllerdao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.Logging.TivoliLogger;
 
 @Service
 public class ControllerServiceImpl implements ControllerService 
@@ -15,6 +16,8 @@ public class ControllerServiceImpl implements ControllerService
 	@Autowired
 	Controllerdao dao;
 	
+	@Autowired
+	TivoliLogger tivoliLogger;
 	public List<ControllerBook> getAllBooks(){
 		Logger logger = LoggerFactory.getLogger("ControllerServiceImpl.class");
 		logger.info("This is an information message");
